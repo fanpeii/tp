@@ -15,6 +15,5 @@ Fingerprint2.get(function(components) {
 		})
 		.then(function(re_data2) {
 			window.murmur=murmur;
-			//alert(re_data2);
 		})
 })
