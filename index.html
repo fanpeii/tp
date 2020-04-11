@@ -1,5 +1,133 @@
-<!DOCTYPE html><html lang=zh-CN><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>GraceUIForUniApp</title><script>document.addEventListener('DOMContentLoaded', function() {
-                document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
-            })
-            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
-            document.write('<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' + (coverSupport ? ', viewport-fit=cover' : '') + '" />')</script><link rel=stylesheet href=/static/index.2d26d90a.css></head><body><noscript><strong>Please enable JavaScript to continue.</strong></noscript><div id=app></div><script src=/static/js/chunk-vendors.920961c1.js></script><script src=/static/js/index.5559e95d.js></script></body></html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>“向上向善永定好青年”评选</title>
+		<!-- HUI CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/shenhai/HUI/css/hui.css" />
+
+		<!-- HUI JS -->
+		<script src="https://cdn.jsdelivr.net/gh/shenhai/HUI/js/hui.js"></script>
+
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?a6d0d83abf8cf76dbd94e4dca35ec39e";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+	<body>
+		<header class="hui-header" style="background-color:#fff;">
+			<!-- <div id="hui-back"></div> -->
+			<h1 style="color: #000;">“向上向善永定好青年”评选</h1>
+		</header>
+		<div class="hui-wrap">
+			<div class="line">
+				<img src="https://pic.imgdb.cn/item/5e8ebdb2504f4bcb04128441.png" style="width: 100%;">
+			</div>
+		</div>
+		<div class="hui-content" style="padding:10px;background-color:#e6e6e6;">
+			<p>为深入学习习近平新时代中国特色社会主义思想，贯彻落实习近平总书记关于青年工作的重要思想，积极发挥团员青年典型的示范引领作用，<strong>永定团区委</strong>决定在全区广大团员青年中开展永定区第一届“向上向善永定好青年”的推选工作。</p>
+			<p style="font-weight: bold;">投票规则：1人每日5票，1票只能投给1人。</p>
+			<p style="font-weight: bold;">投票时间：2020年4月10日——2020年4月15日。</p>
+		</div>
+		<style>
+			#list2 li {
+				width: 47%;
+				float: left;
+				margin: 5px 5px;
+			}
+
+			#list2 .hui-img-list-content {
+				padding: 5px;
+				padding-bottom: 10px;
+			}
+			.hui-img-list-content h1{
+				text-align: center;
+			}
+			.hui-img-list-content p{
+				text-align: center;
+			}
+			#list2 h1 {
+				font-size: 14px;
+			}
+			#list2 img {
+				width:55%;
+			    margin: 27px auto -1px auto;
+			}
+			.hui-content p{
+			    line-height: auto;
+			}
+		</style>
+		<div class="hui-img-list" id="tqw_index">
+			<ul id="list2" v-for="(value, key, index) in  all_info">
+				<div class="hui-common-title" style="padding-top:20px;padding-bottom: 10px;">
+					<div class="hui-common-title-line"></div>
+					<div class="hui-common-title-txt" style="font-weight: bold;font-size:1.3rem;">{{ key }}</div>
+					<div class="hui-common-title-line"></div>
+				</div>
+				<li v-for="info in value">
+					<a :href="'./pages/hxr-'+ info.id+'.html'" style="background-color:#fff;padding-top: 10px;padding-bottom:5px;">
+						<img style="border-radius: 50%;" v-bind:lazysrc="info.img_url" src="https://pic.imgdb.cn/item/5e8d41c5504f4bcb04d7f7e8.jpg"
+						 class="hui-lazy" />
+						<div class="hui-img-list-content">
+							<h1>{{ info.xm }}</h1>
+							<p>当前票数：{{ info.get_nums }}</p>
+							<button type="button" class="hui-button hui-button-large hui-danger" style="margin-top:15px;">
+								<span class="hui-icons hui-icons-star"></span>
+								为TA投票
+							</button>
+						</div>
+						<h1 style="position: absolute;top: 0px;left: 0px;padding-top: 2px;padding-left: 6px;padding-right: 6px;background-color: #ec6d6d;color: #fff;border-radius: 5px;">{{ "排名："+info.px }}</h1>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div style="height:10px;"></div>
+		</div>
+		<div class="hui-wrap">
+			<div class="line">
+				<img src="https://pic.imgdb.cn/item/5e8e1537504f4bcb0490f075.png" style="width: 100%;">
+			</div>
+		</div>
+
+
+		<div style="height:20px;"></div>
+		</div>
+		<hr style="width: 90%;margin: 0 auto;" />
+		<p style="text-align:center;color: #757575;margin-top:10px">CopyRight @ 2020 共青团张家界市永定区委员会</p>
+		<div style="height:50px;"></div>
+		</div>
+
+
+		<script type="text/javascript">
+			document.write('<script src="http://118.254.8.234:8786/wxqtw2/api/index_data.json?math=' + Math.random() + '"><\/script>');
+			// document.write('<script src="http://localwx.com/api/index_data.json?math=' + Math.random() + '"><\/script>');
+		</script>
+		<script type="text/javascript">
+			var vue1 = new Vue({
+				el: '#tqw_index',
+				data: {
+					all_info: all_info
+				},
+				mounted: function() {
+					hui.lazyLoad();
+					// if (!localStorage.msg1) {
+					//     hui.alert("亲们！今天我们优化了投票程序，并且升级了10倍的网络带宽，希望这些改进能给大家带来流畅舒适的参与感。再次感谢亲们的热情参与。");
+					// 	localStorage.msg1 = 1;
+					// } 
+				},
+				methods: {
+
+				},
+			})
+		</script>
+	</body>
+</html>
