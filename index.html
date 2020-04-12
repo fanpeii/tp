@@ -36,7 +36,7 @@
 		<div class="hui-content" style="padding:10px;background-color:#e6e6e6;">
 			<p>为深入学习习近平新时代中国特色社会主义思想，贯彻落实习近平总书记关于青年工作的重要思想，积极发挥团员青年典型的示范引领作用，<strong>永定团区委</strong>决定在全区广大团员青年中开展永定区第一届“向上向善永定好青年”的推选工作。</p>
 			<p style="font-weight: bold;">投票规则：1人每日5票，1票只能投给1人。</p>
-			<p style="font-weight: bold;">投票时间：2020年4月10日——2020年4月15日。</p>
+			<p style="font-weight: bold;">投票时间：2020年4月10日——2020年4月13日。</p>
 		</div>
 		<style>
 			#list2 li {
@@ -119,10 +119,11 @@
 				},
 				mounted: function() {
 					hui.lazyLoad();
-					// if (!localStorage.msg1) {
-					//     hui.alert("亲们！今天我们优化了投票程序，并且升级了10倍的网络带宽，希望这些改进能给大家带来流畅舒适的参与感。再次感谢亲们的热情参与。");
-					// 	localStorage.msg1 = 1;
-					// } 
+					//localStorage.removeItem("msg1");
+					if (!localStorage.msg1) {
+					    hui.alert("亲们！经过沟通协商，我们的投票将会提前在今天截止(4月13日 24:00)<br /><br />同时，为了缓解参与人数过多导致投票卡顿的问题，我们升级改造了投票系统平台，也采购了更多的网络资源保障最后一天投票的流畅运转。<br /><br />再次感谢亲们的热情参与。");
+						localStorage.msg1 = 1;
+					} 
 				},
 				methods: {
 
