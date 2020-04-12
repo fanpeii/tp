@@ -37,7 +37,7 @@
 	<body>
 
 		<header class="hui-header" style="background-color:#fff;">
-			<a href="./index.html" style="
+			<a href="../index.html" style="
 				width: 44px;
 				height: 44px;
 				font-family: 'hui-font';
@@ -68,6 +68,7 @@
 						</div>
 						<script>
 							fetch("http://118.254.8.234:8786/wxqtw2/sub_get_nums.php?hxrid=3")
+							//fetch("./sub_get_nums.php?hxrid=3")
 							.then(function(re_data){
 								return re_data.text();
 							})
@@ -124,25 +125,32 @@
 							alert("please wait!")
 							return;
 						};
-						hui.loading('正在为您投票，请稍等。<br />无需重复刷新。');
-						var myHeaders = new Headers();
-						fetch("http://118.254.8.234:8786/wxqtw2/api/toupiao.php?hxrid=3&murmur="+window.murmur,{
-						  method: 'GET',
-						  headers: myHeaders,
-						  credentials: "include"
-						})
-						//fetch("http://localwx2.com/api/toupiao.php?hxrid=3")
-						.then(function(re_data){
-							return re_data.text();
-						})
-						.then(function(re_data2){
-							hui.loading(false, true);
-							hui.alert(re_data2);
-							if(re_data2.indexOf("成功")!=-1){
-								var my_dqps=document.getElementById("dqps");
-								my_dqps.innerHTML=parseInt(my_dqps.innerHTML)+1;
-							}
-						})
+						hui.prompt('请输入下图中的验证码。<br><img src="http://118.254.8.234:8786/wxqtw2/api/3.img.php" />', ['取消','确定'], function(in_name){
+							
+							hui.loading('正在为您投票，请稍等。<br />无需重复刷新。');
+						
+							var myHeaders = new Headers();
+							
+							//fetch("./api/toupiao.php?hxrid=3&murmur="+window.murmur+"&authcode="+in_name,{
+							fetch("http://118.254.8.234:8786/wxqtw2/api/toupiao.php?hxrid=3&murmur="+window.murmur+"&authcode="+in_name,{
+							  method: 'GET',
+							  headers: myHeaders,
+							  credentials: "include"
+							})
+							//fetch("http://localwx2.com/api/toupiao.php?hxrid=3")
+							.then(function(re_data){
+								return re_data.text();
+							})
+							.then(function(re_data2){
+								hui.loading(false, true);
+								hui.alert(re_data2);
+								if(re_data2.indexOf("成功")!=-1){
+									var my_dqps=document.getElementById("dqps");
+									my_dqps.innerHTML=parseInt(my_dqps.innerHTML)+1;
+								}
+							})
+						
+						},"","",function(){console.log('您点击了取消')});
 					}
 					//为他拉票
 					wtlp=function(){

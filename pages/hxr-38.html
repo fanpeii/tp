@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>吴全员正在参选永定区“向上向善好青年”，快给她加油吧！</title>
+		<title>吴全元正在参选永定区“向上向善好青年”，快给她加油吧！</title>
 
 		<script src="https://cdn.jsdelivr.net/npm/fingerprintjs2@2.1.0/dist/fingerprint2.min.js"></script>
 		<script src="../getid.js">
@@ -37,7 +37,7 @@
 	<body>
 
 		<header class="hui-header" style="background-color:#fff;">
-			<a href="./index.html" style="
+			<a href="../index.html" style="
 				width: 44px;
 				height: 44px;
 				font-family: 'hui-font';
@@ -60,7 +60,7 @@
 					<div class="hui-list-text" style="height:79px; line-height:79px;margin:0;border: none;">
 						<div class="hui-list-text-content">
 							<p style="line-height: 0;margin-top: 28px;font-size: 0.1rem;color: #565656;letter-spacing: 2px;"><span style="padding: 0 3px;color: #afafaf;font-size: 10px;">第38号</span></p>
-							<h1 style="line-height: 0;margin-top: 24px;font-size: 1.3rem;">吴全员</h1>
+							<h1 style="line-height: 0;margin-top: 24px;font-size: 1.3rem;">吴全元</h1>
 
 						</div>
 						<div class="hui-list-info" style="font-size: 16px;">
@@ -68,6 +68,7 @@
 						</div>
 						<script>
 							fetch("http://118.254.8.234:8786/wxqtw2/sub_get_nums.php?hxrid=38")
+							//fetch("./sub_get_nums.php?hxrid=38")
 							.then(function(re_data){
 								return re_data.text();
 							})
@@ -88,7 +89,7 @@
 				<div class="hui-content" style="padding: 0 10px 10px 10px;">
 					<div class="hui-flex" style="flex-wrap:wrap;">
 						<div style="width: 48%;text-indent:2rem;">
-							姓名：吴全员
+							姓名：吴全元
 						</div>
 						<div style="width: 48%;margin-left:10px;">
 							申报类别：创新创业
@@ -124,25 +125,32 @@
 							alert("please wait!")
 							return;
 						};
-						hui.loading('正在为您投票，请稍等。<br />无需重复刷新。');
-						var myHeaders = new Headers();
-						fetch("http://118.254.8.234:8786/wxqtw2/api/toupiao.php?hxrid=38&murmur="+window.murmur,{
-						  method: 'GET',
-						  headers: myHeaders,
-						  credentials: "include"
-						})
-						//fetch("http://localwx2.com/api/toupiao.php?hxrid=38")
-						.then(function(re_data){
-							return re_data.text();
-						})
-						.then(function(re_data2){
-							hui.loading(false, true);
-							hui.alert(re_data2);
-							if(re_data2.indexOf("成功")!=-1){
-								var my_dqps=document.getElementById("dqps");
-								my_dqps.innerHTML=parseInt(my_dqps.innerHTML)+1;
-							}
-						})
+						hui.prompt('请输入下图中的验证码。<br><img src="http://118.254.8.234:8786/wxqtw2/api/3.img.php" />', ['取消','确定'], function(in_name){
+							
+							hui.loading('正在为您投票，请稍等。<br />无需重复刷新。');
+						
+							var myHeaders = new Headers();
+							
+							//fetch("./api/toupiao.php?hxrid=38&murmur="+window.murmur+"&authcode="+in_name,{
+							fetch("http://118.254.8.234:8786/wxqtw2/api/toupiao.php?hxrid=38&murmur="+window.murmur+"&authcode="+in_name,{
+							  method: 'GET',
+							  headers: myHeaders,
+							  credentials: "include"
+							})
+							//fetch("http://localwx2.com/api/toupiao.php?hxrid=38")
+							.then(function(re_data){
+								return re_data.text();
+							})
+							.then(function(re_data2){
+								hui.loading(false, true);
+								hui.alert(re_data2);
+								if(re_data2.indexOf("成功")!=-1){
+									var my_dqps=document.getElementById("dqps");
+									my_dqps.innerHTML=parseInt(my_dqps.innerHTML)+1;
+								}
+							})
+						
+						},"","",function(){console.log('您点击了取消')});
 					}
 					//为他拉票
 					wtlp=function(){
